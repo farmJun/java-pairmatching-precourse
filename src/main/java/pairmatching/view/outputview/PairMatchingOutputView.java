@@ -13,5 +13,6 @@ public class PairMatchingOutputView {
         for (String name : pairsName) {
             System.out.println(name);
         }
+        System.out.println();
     }
 }
