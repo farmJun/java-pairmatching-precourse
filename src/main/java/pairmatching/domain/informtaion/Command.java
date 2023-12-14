@@ -7,6 +7,8 @@ public enum Command {
     READ("페어 조회", "2"),
     CLEAR("페어 초기화", "3"),
     QUIT("종료", "Q"),
+    YES("네", "네"),
+    NO("아니오", "아니오"),
     NOTHING("없음", "");
 
 
