@@ -18,7 +18,6 @@ public class FileReader {
             File file = new File(course.getPath());
             java.io.FileReader fileReader = new java.io.FileReader(file);
             BufferedReader bufReader = new BufferedReader(fileReader);
-
             List<String> crews = new ArrayList<>();
 
             String crewName = "";
@@ -27,7 +26,7 @@ public class FileReader {
             }
             return crews;
         } catch (IOException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 파일 에러");
         }
     }
 }
