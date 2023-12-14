@@ -7,6 +7,7 @@ import pairmatching.domain.History;
 import pairmatching.domain.Pair;
 import pairmatching.domain.PairMatchInformation;
 import pairmatching.domain.Pairs;
+import pairmatching.domain.informtaion.Command;
 import pairmatching.domain.informtaion.Course;
 import pairmatching.domain.informtaion.Level;
 import pairmatching.domain.informtaion.Mission;
@@ -16,10 +17,24 @@ import pairmatching.view.outputview.PairMatchingOutputView;
 public class PairMatchingController {
 
     public void run(History pairMatchingHistory) {
+        PairMatchingOutputView.printInformation();
         PairMatchInformation pairMatchInformation = getPairMatchInformation();
 
-        if (pairMatchingHistory.has(pairMatchInformation)) {
+        while (true) {
+            if (pairMatchingHistory.has(pairMatchInformation)) {
+                Command command = Command.find(PairMatchingInputView.readRematching());
+                if (command.equals(Command.NO)) {
+                    pairMatchInformation = getPairMatchInformation();
+                }
 
+                if (command.equals(Command.YES)) {
+                    break;
+                }
+            }
+
+            if (!pairMatchingHistory.has(pairMatchInformation)) {
+                break;
+            }
         }
 
         List<Crew> crews = pairMatchInformation.getCrews();
